@@ -3,9 +3,6 @@
 #include <stdlib.h>
 // #include <week8.h> //for hw-send only
 
-// PPP-PP-P--PPP--PP-P-
-// PPPPPP-P--PPPP-PP-P-
-
 #ifndef __bin_tree__
 typedef struct node
 {
@@ -191,7 +188,6 @@ int right = 0;
 
 int is_skewed(tree_t *t)
 {
-    // printf("%p l=%p r=%p l=%d r=%d\n", t, t->left, t->right, left, right);
     if (t == NULL || (t->left == NULL && t->right == NULL))
     {
         return 1;
