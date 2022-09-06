@@ -1,6 +1,6 @@
+#include "week9.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "week9.h"
 // #include <week9.h> //for hw-send only
 
 #ifndef __avl_tree__
@@ -15,6 +15,16 @@ typedef struct node
 typedef node_t avl_t;
 #endif
 
+avl_t *insert(avl_t *t, int data)
+{
+    return t;
+}
+
+avl_t *delete (avl_t *t, int data)
+{
+    return t;
+}
+
 int main(void)
 {
     avl_t *t = NULL;
@@ -23,6 +33,7 @@ int main(void)
     scanf("%d", &n);
     for (i = 0; i < n; i++)
     {
+        scanf("%d", &command);
         switch (command)
         {
         case 1:
