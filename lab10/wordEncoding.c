@@ -55,16 +55,16 @@ node_t *delete (heap_t *minHeap)
     {
         if (minHeap->arr_node[child_l]->frequency > minHeap->arr_node[childe_r]->frequency)
         {
-            node_t *temp = minHeap->arr_node[childe_r];
+            swap = minHeap->arr_node[childe_r];
             minHeap->arr_node[childe_r] = minHeap->arr_node[parent];
-            minHeap->arr_node[parent] = temp;
+            minHeap->arr_node[parent] = swap;
             parent = childe_r;
         }
         else
         {
-            node_t *temp = minHeap->arr_node[child_l];
+            swap = minHeap->arr_node[child_l];
             minHeap->arr_node[child_l] = minHeap->arr_node[parent];
-            minHeap->arr_node[parent] = temp;
+            minHeap->arr_node[parent] = swap;
             parent = child_l;
         }
         child_l = 2 * parent, childe_r = 2 * parent + 1;
