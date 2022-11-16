@@ -173,7 +173,7 @@ avl_t *delete (avl_t *t, int data)
     int balance = balanceFactor(t);
     if (balance > 1)
     {
-        if (data >= t->left->data)
+        if (data > t->left->data)
         {
             return RotateRight(t);
         }
@@ -185,7 +185,7 @@ avl_t *delete (avl_t *t, int data)
     }
     if (balance < -1)
     {
-        if (data <= t->right->data)
+        if (data < t->right->data)
         {
             return RotateLeft(t);
         }

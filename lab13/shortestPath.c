@@ -113,7 +113,7 @@ stack_t *already = NULL;
 stack_t *energy = NULL;
 stack_t *total = NULL;
 
-int shortest_path(Graph *map, int from, int too)
+void shortest_path(Graph *map, int from, int too)
 {
     if (from == too)
     {
@@ -126,7 +126,6 @@ int shortest_path(Graph *map, int from, int too)
         }
         total = push(total, t);
         energy = pop(energy);
-        return 0;
     }
     List *temp = map->NodeArr[from];
     already = push(already, from);
@@ -135,16 +134,12 @@ int shortest_path(Graph *map, int from, int too)
         if (!scan(already, temp->number))
         {
             energy = push(energy, temp->weight);
-            if (shortest_path(map, temp->number, too))
-            {
-                return 0;
-            }
+            shortest_path(map, temp->number, too);
         }
         temp = temp->next;
     }
     already = pop(already);
     energy = pop(energy);
-    return 0;
 }
 
 int main(void)
@@ -153,6 +148,7 @@ int main(void)
     int map_size, line, round, i, temp_from, temp_to, temp_weight, too, start;
     scanf("%d %d %d", &map_size, &line, &round);
     mapping = create_graph(map_size);
+
     for (i = 0; i < line; i++)
     {
         scanf("%d %d %d", &temp_from, &temp_to, &temp_weight);

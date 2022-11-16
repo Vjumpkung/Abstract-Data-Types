@@ -239,6 +239,7 @@ void add(int temp_from, int temp_to, int size)
 {
     graph[temp_from][temp_to] = 1;
 }
+}
 
 int main()
 {
