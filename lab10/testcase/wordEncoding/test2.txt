@@ -1,0 +1,10 @@
+9
+to 6
+do 2
+is 2
+be 4
+or 1
+not 1
+i 2
+am 2
+what 1

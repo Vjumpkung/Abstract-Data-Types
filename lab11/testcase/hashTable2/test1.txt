@@ -1,0 +1,11 @@
+13 10 19
+1 qwert
+1 asdf
+1 zklwo
+1 a
+2 qwert
+2 qwerty
+2 a
+2 asdf
+2 omg
+2 abcd

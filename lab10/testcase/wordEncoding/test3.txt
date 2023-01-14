@@ -1,0 +1,11 @@
+10
+i 2
+think 1
+therefore 1
+am 1
+do 6
+de 1
+be 3
+da 3
+let 2
+it 2

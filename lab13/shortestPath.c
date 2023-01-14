@@ -105,13 +105,13 @@ int main(void)
     for (i = 0; i < line; i++)
     {
         scanf("%d %d %d", &temp_from, &temp_to, &temp_weight);
-        mapping = add(mapping, temp_from - 1, temp_to - 1, temp_weight);
+        mapping = add(mapping, temp_from, temp_to, temp_weight);
     }
 
     for (i = 0; i < round; i++)
     {
         scanf("%d %d", &temp_from, &temp_to);
-        int minn = shortest_path(mapping, temp_from - 1, temp_to - 1);
+        int minn = shortest_path(mapping, temp_from, temp_to);
         if (minn == INF)
         {
             printf("%d\n", -1);

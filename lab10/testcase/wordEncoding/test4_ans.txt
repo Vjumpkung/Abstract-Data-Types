@@ -1,0 +1,12 @@
+pickled: 000
+peter: 001
+picked: 010
+peck: 011
+peppers: 100
+piper: 101
+of: 110
+a: 1110
+if: 111100
+where: 111101
+is: 111110
+the: 111111

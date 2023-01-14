@@ -1,0 +1,10 @@
+therefore: 0000
+de: 0001
+it: 001
+think: 0100
+am: 0101
+da: 011
+do: 10
+be: 110
+i: 1110
+let: 1111

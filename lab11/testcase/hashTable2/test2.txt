@@ -1,0 +1,21 @@
+211 20 93
+1 abcd
+1 abdc
+1 afnc
+1 oog
+1 ozg
+1 obg
+1 obp
+1 fjdlo
+1 auvun
+1 adzlr
+2 abcd
+2 abdc
+2 afnc
+2 oof
+2 ozg
+2 obg
+2 obp
+2 fjdlo
+2 auvun
+2 adzlr

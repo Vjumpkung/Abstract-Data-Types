@@ -1,0 +1,7 @@
+6
+i 3
+am 3
+ok 1
+a 1
+boy 1
+how 1
