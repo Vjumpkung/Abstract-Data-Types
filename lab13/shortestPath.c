@@ -1,56 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct stack
-{
-    int data;
-    struct stack *next;
-} stack_t;
-
-int scan(stack_t *q, int val)
-{
-    while (q != NULL)
-    {
-        if (q->data == val)
-        {
-            return 1;
-        }
-        q = q->next;
-    }
-    return 0;
-}
-
-stack_t *pop(stack_t *s)
-{
-    if (s == NULL)
-    {
-        return s;
-    }
-    stack_t *temp = s;
-    s = (s)->next;
-    free(temp);
-    return s;
-}
-
-stack_t *push(stack_t *s, int val)
-{
-    stack_t *temp = (stack_t *)malloc(sizeof(stack_t));
-    temp->data = val;
-    temp->next = NULL;
-
-    temp->next = s;
-    s = temp;
-    return s;
-}
-
-int top(stack_t *s)
-{
-    if (s == NULL)
-    {
-        return -1;
-    }
-    return s->data;
-}
+#define INF 0xfffffff
 
 typedef struct node
 {
@@ -109,37 +59,40 @@ Graph *add(Graph *map, int from, int too, int weight)
     return map;
 }
 
-stack_t *already = NULL;
-stack_t *energy = NULL;
-stack_t *total = NULL;
-
-void shortest_path(Graph *map, int from, int too)
+int shortest_path(Graph *map, int from, int too)
 {
-    if (from == too)
+    int i, j;
+    int dist[map->size], visited[map->size];
+    for (i = 0; i < map->size; i++)
     {
-        int t = 0;
-        stack_t *te = energy;
-        while (te != NULL)
-        {
-            t += te->data;
-            te = te->next;
-        }
-        total = push(total, t);
-        energy = pop(energy);
+        dist[i] = INF;
+        visited[i] = 0;
     }
-    List *temp = map->NodeArr[from];
-    already = push(already, from);
-    while (temp != NULL)
+    dist[from] = 0;
+    for (i = 0; i < map->size; i++)
     {
-        if (!scan(already, temp->number))
+        int argmin = 0;
+        int minn = INF;
+        for (j = 0; j < map->size; j++)
         {
-            energy = push(energy, temp->weight);
-            shortest_path(map, temp->number, too);
+            if (!visited[j] && dist[j] < minn)
+            {
+                minn = dist[j];
+                argmin = j;
+            }
         }
-        temp = temp->next;
+        visited[argmin] = 1;
+        List *temp = map->NodeArr[argmin]->next;
+        while (temp != NULL)
+        {
+            if (dist[temp->number] > dist[argmin] + temp->weight)
+            {
+                dist[temp->number] = dist[argmin] + temp->weight;
+            }
+            temp = temp->next;
+        }
     }
-    already = pop(already);
-    energy = pop(energy);
+    return dist[too];
 }
 
 int main(void)
@@ -152,23 +105,14 @@ int main(void)
     for (i = 0; i < line; i++)
     {
         scanf("%d %d %d", &temp_from, &temp_to, &temp_weight);
-        mapping = add(mapping, temp_from, temp_to, temp_weight);
+        mapping = add(mapping, temp_from - 1, temp_to - 1, temp_weight);
     }
 
     for (i = 0; i < round; i++)
     {
         scanf("%d %d", &temp_from, &temp_to);
-        shortest_path(mapping, temp_from, temp_to);
-        int minn = 9999999;
-        while (total != NULL)
-        {
-            if (top(total) < minn)
-            {
-                minn = top(total);
-            }
-            total = pop(total);
-        }
-        if (minn == 9999999)
+        int minn = shortest_path(mapping, temp_from - 1, temp_to - 1);
+        if (minn == INF)
         {
             printf("%d\n", -1);
         }
